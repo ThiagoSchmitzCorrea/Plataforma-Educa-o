@@ -1,0 +1,29 @@
+<h1><%= @course.title %></h1>
+
+<p>
+  <strong>Descrição:</strong>
+  <%= @course.description %>
+</p>
+
+<h2>Tarefas</h2>
+<%= link_to 'Nova tarefa', new_course_lesson_path(@course) %>
+
+<ul>
+  <% @course.lessons.each do |lesson| %>
+    <td><li><%= link_to lesson.title, [@course, lesson] %></li></td>
+    <%= button_to 'Deletar tarefa', [@course, lesson], method: :delete, data: { turbo_confirm: 'Tem certeza?' } %>
+  <% end %>
+</ul>
+
+<h2>Quizzes</h2>
+<%= link_to 'Novo quiz', new_course_quiz_path(@course) %>
+
+<ul>
+  <% @course.quizzes.each do |quiz| %>
+    <li><%= link_to quiz.question, [@course, quiz] %></li>
+    <%= button_to 'Deletar quiz', [@course, quiz], method: :delete, data: { turbo_confirm: 'Tem certeza?' } %>
+  <% end %>
+</ul>
+
+<%= link_to 'Editar', edit_course_path(@course) %> |
+<%= link_to 'Voltar', courses_path %>

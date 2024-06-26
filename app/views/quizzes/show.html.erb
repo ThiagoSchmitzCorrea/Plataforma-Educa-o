@@ -1,0 +1,14 @@
+<h1>Quiz</h1>
+
+<p>
+  <strong>Pergunta:</strong>
+  <%= @quiz.question %>
+</p>
+
+<p>
+  <strong>Resposta:</strong>
+  <%= @quiz.answer %>
+</p>
+
+<%= link_to 'Editar', edit_course_quiz_path(@course, @quiz) %> |
+<%= link_to 'Voltar', course_path(@course) %>
